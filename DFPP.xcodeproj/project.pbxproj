@@ -13,6 +13,9 @@
 		AD2B12A5215A7DFF009D1657 /* DFPP.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AD2B12A3215A7DFF009D1657 /* DFPP.xcdatamodeld */; };
 		AD2B12A7215A7E01009D1657 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD2B12A6215A7E01009D1657 /* Assets.xcassets */; };
 		AD2B12AA215A7E01009D1657 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD2B12A8215A7E01009D1657 /* LaunchScreen.storyboard */; };
+		ADA9F0CC217657EB00D23408 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA9F0CB217657EB00D23408 /* Question.swift */; };
+		ADA9F0D021765B5C00D23408 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA9F0CF21765B5C00D23408 /* Section.swift */; };
+		ADA9F0D221765BA600D23408 /* Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA9F0D121765BA600D23408 /* Form.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		AD2B12A6215A7E01009D1657 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AD2B12A9215A7E01009D1657 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AD2B12AB215A7E01009D1657 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ADA9F0CB217657EB00D23408 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		ADA9F0CF21765B5C00D23408 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
+		ADA9F0D121765BA600D23408 /* Form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Form.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +62,7 @@
 		AD2B129B215A7DFF009D1657 /* DFPP */ = {
 			isa = PBXGroup;
 			children = (
+				ADA9F0CA217655EF00D23408 /* DataStructure */,
 				AD2B129C215A7DFF009D1657 /* AppDelegate.swift */,
 				AD2B129E215A7DFF009D1657 /* ViewController.swift */,
 				AD2B12A0215A7DFF009D1657 /* Main.storyboard */,
@@ -65,6 +72,16 @@
 				AD2B12A3215A7DFF009D1657 /* DFPP.xcdatamodeld */,
 			);
 			path = DFPP;
+			sourceTree = "<group>";
+		};
+		ADA9F0CA217655EF00D23408 /* DataStructure */ = {
+			isa = PBXGroup;
+			children = (
+				ADA9F0CB217657EB00D23408 /* Question.swift */,
+				ADA9F0CF21765B5C00D23408 /* Section.swift */,
+				ADA9F0D121765BA600D23408 /* Form.swift */,
+			);
+			path = DataStructure;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +155,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADA9F0D021765B5C00D23408 /* Section.swift in Sources */,
 				AD2B129F215A7DFF009D1657 /* ViewController.swift in Sources */,
+				ADA9F0CC217657EB00D23408 /* Question.swift in Sources */,
 				AD2B12A5215A7DFF009D1657 /* DFPP.xcdatamodeld in Sources */,
 				AD2B129D215A7DFF009D1657 /* AppDelegate.swift in Sources */,
+				ADA9F0D221765BA600D23408 /* Form.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,12 +307,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TF3EPYZGDW;
 				INFOPLIST_FILE = DFPP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.dfpp.DFPP;
+				PRODUCT_BUNDLE_IDENTIFIER = "con.harmonium-pharma.dfpp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -304,12 +325,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TF3EPYZGDW;
 				INFOPLIST_FILE = DFPP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.dfpp.DFPP;
+				PRODUCT_BUNDLE_IDENTIFIER = "con.harmonium-pharma.dfpp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
