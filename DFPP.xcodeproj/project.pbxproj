@@ -13,6 +13,11 @@
 		AD2B12A5215A7DFF009D1657 /* DFPP.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AD2B12A3215A7DFF009D1657 /* DFPP.xcdatamodeld */; };
 		AD2B12A7215A7E01009D1657 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD2B12A6215A7E01009D1657 /* Assets.xcassets */; };
 		AD2B12AA215A7E01009D1657 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD2B12A8215A7E01009D1657 /* LaunchScreen.storyboard */; };
+		AD7024322177D42C00DFCBA2 /* FormTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7024312177D42C00DFCBA2 /* FormTableViewController.swift */; };
+		AD7024352177D45A00DFCBA2 /* QuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7024342177D45A00DFCBA2 /* QuestionTableViewCell.swift */; };
+		AD7B2C04217A03BD0076F253 /* AnagraficaTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B2C03217A03BD0076F253 /* AnagraficaTableViewController.swift */; };
+		AD7B2C06217A35E00076F253 /* Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B2C05217A35E00076F253 /* Patient.swift */; };
+		AD7B2C08217A38F50076F253 /* PatientListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B2C07217A38F50076F253 /* PatientListViewController.swift */; };
 		ADA9F0CC217657EB00D23408 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA9F0CB217657EB00D23408 /* Question.swift */; };
 		ADA9F0D021765B5C00D23408 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA9F0CF21765B5C00D23408 /* Section.swift */; };
 		ADA9F0D221765BA600D23408 /* Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA9F0D121765BA600D23408 /* Form.swift */; };
@@ -27,6 +32,11 @@
 		AD2B12A6215A7E01009D1657 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AD2B12A9215A7E01009D1657 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AD2B12AB215A7E01009D1657 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AD7024312177D42C00DFCBA2 /* FormTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTableViewController.swift; sourceTree = "<group>"; };
+		AD7024342177D45A00DFCBA2 /* QuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTableViewCell.swift; sourceTree = "<group>"; };
+		AD7B2C03217A03BD0076F253 /* AnagraficaTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnagraficaTableViewController.swift; sourceTree = "<group>"; };
+		AD7B2C05217A35E00076F253 /* Patient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patient.swift; sourceTree = "<group>"; };
+		AD7B2C07217A38F50076F253 /* PatientListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientListViewController.swift; sourceTree = "<group>"; };
 		ADA9F0CB217657EB00D23408 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		ADA9F0CF21765B5C00D23408 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		ADA9F0D121765BA600D23408 /* Form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Form.swift; sourceTree = "<group>"; };
@@ -62,7 +72,10 @@
 		AD2B129B215A7DFF009D1657 /* DFPP */ = {
 			isa = PBXGroup;
 			children = (
+				AD7B2C07217A38F50076F253 /* PatientListViewController.swift */,
+				AD7024332177D43800DFCBA2 /* Form */,
 				ADA9F0CA217655EF00D23408 /* DataStructure */,
+				AD7B2C03217A03BD0076F253 /* AnagraficaTableViewController.swift */,
 				AD2B129C215A7DFF009D1657 /* AppDelegate.swift */,
 				AD2B129E215A7DFF009D1657 /* ViewController.swift */,
 				AD2B12A0215A7DFF009D1657 /* Main.storyboard */,
@@ -74,9 +87,19 @@
 			path = DFPP;
 			sourceTree = "<group>";
 		};
+		AD7024332177D43800DFCBA2 /* Form */ = {
+			isa = PBXGroup;
+			children = (
+				AD7024312177D42C00DFCBA2 /* FormTableViewController.swift */,
+				AD7024342177D45A00DFCBA2 /* QuestionTableViewCell.swift */,
+			);
+			path = Form;
+			sourceTree = "<group>";
+		};
 		ADA9F0CA217655EF00D23408 /* DataStructure */ = {
 			isa = PBXGroup;
 			children = (
+				AD7B2C05217A35E00076F253 /* Patient.swift */,
 				ADA9F0CB217657EB00D23408 /* Question.swift */,
 				ADA9F0CF21765B5C00D23408 /* Section.swift */,
 				ADA9F0D121765BA600D23408 /* Form.swift */,
@@ -156,11 +179,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADA9F0D021765B5C00D23408 /* Section.swift in Sources */,
+				AD7024352177D45A00DFCBA2 /* QuestionTableViewCell.swift in Sources */,
+				AD7B2C08217A38F50076F253 /* PatientListViewController.swift in Sources */,
 				AD2B129F215A7DFF009D1657 /* ViewController.swift in Sources */,
+				AD7B2C04217A03BD0076F253 /* AnagraficaTableViewController.swift in Sources */,
 				ADA9F0CC217657EB00D23408 /* Question.swift in Sources */,
 				AD2B12A5215A7DFF009D1657 /* DFPP.xcdatamodeld in Sources */,
 				AD2B129D215A7DFF009D1657 /* AppDelegate.swift in Sources */,
 				ADA9F0D221765BA600D23408 /* Form.swift in Sources */,
+				AD7024322177D42C00DFCBA2 /* FormTableViewController.swift in Sources */,
+				AD7B2C06217A35E00076F253 /* Patient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

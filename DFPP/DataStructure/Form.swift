@@ -8,14 +8,22 @@
 
 import Foundation
 
+enum FormType {
+    case Historical
+    case Visit
+}
+
+
 class Form {
     let name : String
     var sections : [Section]
+    var type : FormType
     
-    init(name: String, sections: [Section] = []) {
+    init(name: String, sections: [Section] = [], type : FormType = .Historical) {
         self.name = name
         self.sections = sections
-        
+        self.type = type
+    
     }
     
     /**
@@ -36,11 +44,12 @@ class Form {
     }
     
     /**
-     Metodo per riempire tutte le sezioni con i valori di default
+     Metodo per riempire tutte le sezioni con i valori di default dellam visita
      */
-    func fillDefaultValues() {
+    func fillDefVisitValues() {
+        
+        self.type = .Visit
     
-        self.sections.append(self.addSection(name: "Storia Clinica", questArray: quest_hist))
         self.sections.append(self.addSection(name: "Status della cute", questArray: quest_cute))
         self.sections.append(self.addSection(name: "Status delle unghie", questArray: quest_unghie))
         self.sections.append(self.addSection(name: "Identificazione delle deformità", questArray: quest_def))
@@ -48,9 +57,18 @@ class Form {
         self.sections.append(self.addSection(name: "Valutazione della sensibilità", questArray: quest_sens))
         self.sections.append(self.addSection(name: "Autovalutazione", questArray: quest_auto))
         
-        
     }
     
+    /**
+    Metodo per riempire le sezioni anagrafiche con i valori di default
+    */
+    func fillDefHistValues() {
+        self.type = .Historical
+        
+        self.sections.append(self.addSection(name: "Storia Clinica", questArray: quest_hist))
+        
+        
+    }
     
     
 }
