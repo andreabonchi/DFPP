@@ -20,6 +20,8 @@ class AnagraficaTableViewController: UITableViewController {
             guard let patient = patient else {return}
             self.name = patient.name
             self.surname = patient.surname
+            
+            self.title = patient.name + " " + patient.surname
         }
     }
 
@@ -37,7 +39,7 @@ class AnagraficaTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         
-        return 3
+        return 2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -45,14 +47,11 @@ class AnagraficaTableViewController: UITableViewController {
         case 0:
             return 1
         case 1:
-            return 1
-        case 2:
-            return 1
+            return 1 + self.patient!.visitList.count
+        
         default:
             return 0
         }
-        
-        return 2
     }
 
     
@@ -60,18 +59,18 @@ class AnagraficaTableViewController: UITableViewController {
         
         // Anagrafica
         // TODO: verificare se rimuovere la cella
-        if indexPath.section == 0 {
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cellAnagrafica", for: indexPath)
-            cell.textLabel?.text = self.name
-            cell.detailTextLabel?.text = self.surname
-            
-            return cell
-            
-        }
+//        if indexPath.section == 0 {
+//
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "cellAnagrafica", for: indexPath)
+//            cell.textLabel?.text = self.name
+//            cell.detailTextLabel?.text = self.surname
+//
+//            return cell
+//
+//        }
         
         // Storia Clinica
-        if indexPath.section == 1 {
+        if indexPath.section == 0 {
             
             if patient?.histForm == nil {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "cellAddForm", for: indexPath)
@@ -92,13 +91,26 @@ class AnagraficaTableViewController: UITableViewController {
         
         
         // Visite
-        if indexPath.section == 2 {
+        if indexPath.section == 1 {
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cellAddForm", for: indexPath)
+            if indexPath.row >= self.patient!.visitList.count {
+                
+                let cell = tableView.dequeueReusableCell(withIdentifier: "cellAddForm", for: indexPath)
+                
+                cell.textLabel?.text = "Aggiungi nuova visita"
+                cell.textLabel?.textColor = UIColor.blue
+                return cell
+                
+            } else {
+                
+                let cell = tableView.dequeueReusableCell(withIdentifier: "cellVisit", for: indexPath)
+                let visit = self.patient?.visitList[indexPath.row]
+                cell.textLabel?.text = visit?.name
+                cell.detailTextLabel?.text = visit?.stringDate
+                return cell
+                
+            }
             
-            cell.textLabel?.text = "Aggiungi visita"
-            cell.textLabel?.textColor = UIColor.blue
-            return cell
         }
         
         
@@ -113,16 +125,37 @@ class AnagraficaTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         // sezione form history
-        if indexPath.section == 1 {
+        if indexPath.section == 0 {
             var form = patient?.histForm
             
             if form == nil {
-                form = Form(name: "History")
+                form = Form(name: "History", date: Date())
                 form?.fillDefHistValues()
-                print("riempiamo con in default")
             }
             
             self.performSegue(withIdentifier: AnagraficaTableViewController.segueShowForm, sender: form)
+        }
+        
+        
+        // sezione form visite
+        if indexPath.section == 1 {
+            
+            if indexPath.row < patient!.visitList.count {
+                let visit = patient?.visitList[indexPath.row]
+                visit?.isModificable = false
+                self.performSegue(withIdentifier: AnagraficaTableViewController.segueShowForm, sender: visit)
+                print("cella con visita")
+                
+            } else {
+                let form = Form(name: "Visit", date: Date())
+                form.fillDefVisitValues()
+                
+                self.performSegue(withIdentifier: AnagraficaTableViewController.segueShowForm, sender: form)
+                
+            }
+            
+            
+            
         }
         
 
@@ -132,10 +165,8 @@ class AnagraficaTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
-            return "Anagrafica"
-        case 1:
             return "Storia Clinica"
-        case 2:
+        case 1:
             return "Visite"
         default:
             return ""
@@ -147,9 +178,21 @@ class AnagraficaTableViewController: UITableViewController {
     @IBAction func unwindFromFormTableView(_ sender: UIStoryboardSegue) {
         
         if let source = sender.source as? FormTableViewController {
-            self.patient?.histForm = source.myForm
-            print("anagrafica")
+        
+            if source.myForm?.type == FormType.Historical {
+                self.patient?.histForm = source.myForm
+                
+            } else {
+                self.patient?.visitList.append(source.myForm!)
+            }
             self.tableView.reloadData()
+            
+            
+//            for question in source.myForm!.sections[0].questions{
+//                print(question.responce)
+//            }
+
+            
         } else {
             print("errore nell'unwind ")
         }

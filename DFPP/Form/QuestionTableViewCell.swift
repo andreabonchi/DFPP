@@ -12,15 +12,18 @@ class QuestionTableViewCell: UITableViewCell {
 
     @IBOutlet weak var butSwitch: UISwitch!
     @IBOutlet weak var textQuestion: UILabel!
+    var delegate: QuestionCellDelegate?
+    var indexPath: IndexPath?
     
-    var myQuestion : Question? {
+    var myQuestion : Question?
+    {
         didSet {
             guard let myQuestion = myQuestion else {return}
-            
+
             self.textQuestion.text = myQuestion.text
             self.butSwitch.isOn = myQuestion.responce
             self.butSwitch.addTarget(self, action: #selector(self.swichButChange), for: .valueChanged)
-            
+
         }
     }
     
@@ -29,7 +32,27 @@ class QuestionTableViewCell: UITableViewCell {
         // Initialization code
     }
     
+    func setCell(question: Question, index: IndexPath, delegate: QuestionCellDelegate, isEnabled : Bool = true) {
+
+        self.myQuestion = question
+        self.indexPath = index
+        
+        self.delegate = delegate
+        
+        self.butSwitch.isEnabled = isEnabled
+
+
+    }
     
+    func setSexCell() {
+        let pink = UIColor.init(red: 255/255, green: 105/255, blue: 180/255, alpha: 1)
+        let deepskyblue = UIColor(red: 0, green: 192/255, blue: 255/255, alpha: 1)
+        self.butSwitch.backgroundColor = deepskyblue.withAlphaComponent(0.9)
+        self.butSwitch.tintColor = UIColor.clear
+        self.butSwitch.layer.cornerRadius = self.butSwitch.bounds.height / 2
+//        self.butSwitch.tintColor = UIColor.blue
+        self.butSwitch.onTintColor = pink
+    }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -39,8 +62,17 @@ class QuestionTableViewCell: UITableViewCell {
     
     
     @objc func swichButChange() {
-        print("valore cambiato")
+        self.delegate?.changeResponce(result: butSwitch.isOn, index: self.indexPath!)
+
+//        self.myQuestion?.responce = butSwitch.isOn
+//        print("valore cambiato in " + String(self.myQuestion!.responce))
         
     }
 
+}
+
+
+protocol QuestionCellDelegate {
+    
+    func changeResponce(result: Bool, index: IndexPath)
 }

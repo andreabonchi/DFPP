@@ -26,6 +26,10 @@ class PatientListViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.tableView.reloadData()
+    }
+    
     
 
     // MARK: - Table view data source
@@ -55,7 +59,7 @@ class PatientListViewController: UITableViewController {
             cell.detailTextLabel?.text = "Nessuna visita"
         } else {
             let visit = patient.visitList.last
-            cell.detailTextLabel?.text = visit?.name
+            cell.detailTextLabel?.text = visit?.stringDate
             
         }
         

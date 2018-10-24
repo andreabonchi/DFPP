@@ -18,11 +18,18 @@ class Form {
     let name : String
     var sections : [Section]
     var type : FormType
+    var date : Date
+    var stringDate : String
+    var isModificable : Bool = true
     
-    init(name: String, sections: [Section] = [], type : FormType = .Historical) {
+    init(name: String, sections: [Section] = [], type : FormType = .Historical, date : Date) {
+        
         self.name = name
         self.sections = sections
         self.type = type
+        self.date = date
+        
+        self.stringDate = DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .none)
     
     }
     

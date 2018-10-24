@@ -91,7 +91,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellVisit" textLabel="vUS-Wh-Rga" style="IBUITableViewCellStyleDefault" id="I2L-rl-fWk">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellVisit" textLabel="vUS-Wh-Rga" detailTextLabel="G5a-Uw-ccH" style="IBUITableViewCellStyleValue1" id="I2L-rl-fWk">
                                 <rect key="frame" x="0.0" y="187.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="I2L-rl-fWk" id="sbu-bI-B65">
@@ -99,7 +99,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vUS-Wh-Rga">
-                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                            <rect key="frame" x="16" y="12" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="G5a-Uw-ccH">
+                                            <rect key="frame" x="315" y="12" width="44" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -148,7 +155,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="QuestionCell" rowHeight="70" id="hXN-OP-6dv" customClass="QuestionTableViewCell" customModule="DFPP" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="QuestionCell" rowHeight="70" id="hXN-OP-6dv" customClass="QuestionTableViewCell" customModule="DFPP" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="375" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hXN-OP-6dv" id="gSE-zf-MDs">
@@ -208,7 +215,7 @@
             </objects>
             <point key="canvasLocation" x="4871" y="-581"/>
         </scene>
-        <!--Archivio Pazienti-->
+        <!--Pazienti-->
         <scene sceneID="958-Mv-Upn">
             <objects>
                 <tableViewController id="oWr-Gr-wga" customClass="PatientListViewController" customModule="DFPP" customModuleProvider="target" sceneMemberID="viewController">
@@ -247,7 +254,7 @@
                             <outlet property="delegate" destination="oWr-Gr-wga" id="dCV-zI-FXd"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Archivio Pazienti" id="UQH-M9-X4r">
+                    <navigationItem key="navigationItem" title="Pazienti" id="UQH-M9-X4r">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Lda-Lh-fUs">
                             <connections>
                                 <action selector="clickAddPatient:" destination="oWr-Gr-wga" id="GF9-kL-W6K"/>

@@ -8,9 +8,9 @@
 
 import UIKit
 
-class FormTableViewController: UITableViewController {
+class FormTableViewController: UITableViewController, QuestionCellDelegate {
     
-    var myForm : Form = Form(name: "Name Form")
+    var myForm : Form?
     
     @IBOutlet weak var cancelBarButton: UIBarButtonItem!
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
@@ -25,26 +25,27 @@ class FormTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
-//        self.buildDefData()
+        self.buildBaseData()
         
     }
     
-    private func buildDefData() {
-        
-        self.myForm.fillDefVisitValues()
-    
+    private func buildBaseData() {
+
+        self.title = "Visita " + myForm!.stringDate
+        self.doneBarButton.isEnabled = myForm!.isModificable
+
     }
     
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return myForm.sections.count
+        return myForm!.sections.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        let sect = self.myForm.sections[section]
+        let sect = self.myForm!.sections[section]
     
         return sect.questions.count
     }
@@ -53,10 +54,14 @@ class FormTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! QuestionTableViewCell
         
-        let sec = self.myForm.sections[indexPath.section]
+        let sec = self.myForm!.sections[indexPath.section]
         let question = sec.questions[indexPath.row]
         
-        cell.myQuestion = question
+        cell.setCell(question: question, index: indexPath, delegate: self, isEnabled: myForm!.isModificable)
+        
+        if myForm?.type == FormType.Historical && indexPath.row == 7 {
+            cell.setSexCell()
+        }
 
         return cell
     }
@@ -64,7 +69,7 @@ class FormTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
-        let sec = self.myForm.sections[section]
+        let sec = self.myForm!.sections[section]
         return sec.title
     }
     
@@ -75,8 +80,6 @@ class FormTableViewController: UITableViewController {
     
     
     // MARK: - click button responce
-    
-    
     @IBAction func clickCancel(_ sender: Any) {
         navigationController?.popViewController(animated: true)
         
@@ -84,20 +87,22 @@ class FormTableViewController: UITableViewController {
         
     }
     
+    
     @IBAction func clickDone(_ sender: Any) {
         
         navigationController?.popViewController(animated: true)
         
-        for section in myForm.sections {
-            for question in section.questions {
-                
-            }
-        }
-        
-        
         dismiss(animated: true, completion: nil)
     }
     
+    
+    // MARK: - Question Delegate
+    
+    func changeResponce(result: Bool, index: IndexPath) {
+        
+        self.myForm!.sections[index.section].questions[index.row].responce = result
+        
+    }
 
     
     /*

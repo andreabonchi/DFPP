@@ -73,9 +73,9 @@
 			isa = PBXGroup;
 			children = (
 				AD7B2C07217A38F50076F253 /* PatientListViewController.swift */,
+				AD7B2C03217A03BD0076F253 /* AnagraficaTableViewController.swift */,
 				AD7024332177D43800DFCBA2 /* Form */,
 				ADA9F0CA217655EF00D23408 /* DataStructure */,
-				AD7B2C03217A03BD0076F253 /* AnagraficaTableViewController.swift */,
 				AD2B129C215A7DFF009D1657 /* AppDelegate.swift */,
 				AD2B129E215A7DFF009D1657 /* ViewController.swift */,
 				AD2B12A0215A7DFF009D1657 /* Main.storyboard */,
