@@ -10,11 +10,13 @@ import UIKit
 
 class FormTableViewController: UITableViewController, QuestionCellDelegate {
     
+    let appD = UIApplication.shared.delegate as! AppDelegate
     var myForm : Form?
     
-    @IBOutlet weak var cancelBarButton: UIBarButtonItem!
+
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
     
+    let segueRiskView = "segueShowRisk"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +34,21 @@ class FormTableViewController: UITableViewController, QuestionCellDelegate {
     private func buildBaseData() {
 
         self.title = "Visita " + myForm!.stringDate
-        self.doneBarButton.isEnabled = myForm!.isModificable
+        
+        if self.myForm is VisitForm && !self.myForm!.isModificable {
+            
+            let visForm = self.myForm as! VisitForm
+            self.doneBarButton.title = ""
+            
+            if visForm.isHighRiskResult! {
+                self.doneBarButton.image = highRiskImage
+            } else {
+                self.doneBarButton.image = lowRiskImage
+            }
+
+        } else {
+            self.doneBarButton.title = "Done"
+        }
 
     }
     
@@ -59,7 +75,9 @@ class FormTableViewController: UITableViewController, QuestionCellDelegate {
         
         cell.setCell(question: question, index: indexPath, delegate: self, isEnabled: myForm!.isModificable)
         
-        if myForm?.type == FormType.Historical && indexPath.row == 7 {
+        
+        if myForm is HistoryForm && indexPath.row == 7 {
+    
             cell.setSexCell()
         }
 
@@ -80,23 +98,108 @@ class FormTableViewController: UITableViewController, QuestionCellDelegate {
     
     
     // MARK: - click button responce
-    @IBAction func clickCancel(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
-        
-        dismiss(animated: true, completion: nil)
-        
-    }
+//    @IBAction func clickCancel(_ sender: Any) {
+//        navigationController?.popViewController(animated: true)
+//
+//        dismiss(animated: true, completion: nil)
+//
+//    }
     
     
     @IBAction func clickDone(_ sender: Any) {
         
-        navigationController?.popViewController(animated: true)
+        // in case of visit form
+        if let visForm = self.myForm as? VisitForm  {
+            
+            if visForm.isModificable {
+                let result = visForm.calculateResult()
+                
+                // salviamo la visita corrente
+                if self.appD.currentPatient != nil {
+                    self.appD.currentPatient!.visitList.append(visForm)
+                }
+                
+                self.buildBaseData()
+                self.tableView.reloadData()
+                self.showResponceAlert(highRisk: result)
+
+            } else {
+                
+                self.showVisitSuggestionPage(highRisk: visForm.isHighRiskResult!)
+                
+            }
+        }
         
-        dismiss(animated: true, completion: nil)
+        
+        // in case of history form
+        if let histForm = self.myForm as? HistoryForm {
+            
+            histForm.isModificable = false
+            
+            if self.appD.currentPatient != nil {
+                self.appD.currentPatient!.histForm = histForm
+            }
+            
+            self.buildBaseData()
+            self.tableView.reloadData()
+            
+        }
+
     }
     
+    /**
+     Mostra l'alert con il risultato della visita
+     */
+    func showResponceAlert(highRisk: Bool) {
+        
+        let title = "Risultato"
+        var message = ""
+        
+        if highRisk {
+            message = "Il paziente ha un ALTO livello di rischio. "
+        } else {
+            message = "Il paziente ha un BASSO livello di rischio. "
+        }
+        
+        message += "Vuoi visualizzare i consigli?"
+        
+        let okAction = UIAlertAction(title: "No", style: .cancel) {
+            (_) -> Void in
+            
+            self.goBackToView()
+            
+        }
+        let showAction = UIAlertAction(title: "Mostra", style: .default) {
+            (_) -> Void in
+            self.showVisitSuggestionPage(highRisk: highRisk)
+        }
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(okAction)
+        alert.addAction(showAction)
+        
+        self.present(alert, animated: true)
+        
+    }
     
-    // MARK: - Question Delegate
+    /**
+     Mostra la pagina con i suggerimenti
+     */
+    func showVisitSuggestionPage(highRisk: Bool) {
+        debugPrint("andiamo alla pagina dei consigli")
+        self.performSegue(withIdentifier: self.segueRiskView, sender: highRisk)
+        
+    }
+    
+    /**
+    Torna indietro alla view precendete
+    */
+    func goBackToView() {
+        //TODO: add back view???? altrimenti nulla
+    }
+
+    
+    // MARK: - Question Delegate (delegati delle azioni nelle singole celle)
     
     func changeResponce(result: Bool, index: IndexPath) {
         
@@ -140,14 +243,22 @@ class FormTableViewController: UITableViewController, QuestionCellDelegate {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == self.segueRiskView {
+            let res = sender as! Bool
+            
+            let riskView = segue.destination as! RiskAdviserViewViewController
+            riskView.isHighRisk = res
+            
+        }
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
 }

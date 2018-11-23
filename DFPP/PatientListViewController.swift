@@ -180,6 +180,7 @@ class PatientListViewController: UITableViewController {
             let patient = sender as? Patient
             
             let patientView = segue.destination as! AnagraficaTableViewController
+            self.appD.currentPatient = patient
             patientView.patient = patient
         }
     }

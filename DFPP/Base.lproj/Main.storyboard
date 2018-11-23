@@ -1,29 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wuS-86-IvG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wuS-86-IvG">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="DFPP" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="633" y="-1317"/>
-        </scene>
         <!--Anagrafica paziente-->
         <scene sceneID="XZs-HO-Ub6">
             <objects>
@@ -91,11 +76,11 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellVisit" textLabel="vUS-Wh-Rga" detailTextLabel="G5a-Uw-ccH" style="IBUITableViewCellStyleValue1" id="I2L-rl-fWk">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cellVisit" textLabel="vUS-Wh-Rga" detailTextLabel="G5a-Uw-ccH" style="IBUITableViewCellStyleValue1" id="I2L-rl-fWk">
                                 <rect key="frame" x="0.0" y="187.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="I2L-rl-fWk" id="sbu-bI-B65">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vUS-Wh-Rga">
@@ -106,7 +91,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="G5a-Uw-ccH">
-                                            <rect key="frame" x="315" y="12" width="44" height="20.5"/>
+                                            <rect key="frame" x="296" y="12" width="44" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -123,28 +108,12 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Anagrafica paziente" id="ojf-OC-uwc"/>
                     <connections>
-                        <segue destination="vzv-cB-4g2" kind="presentation" identifier="showForm" id="aOw-If-GGP"/>
+                        <segue destination="Md3-hK-NDQ" kind="show" identifier="showForm" id="Kcb-db-qu9"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ph3-O2-JN8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3127" y="134"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="FfD-4a-YSo">
-            <objects>
-                <navigationController id="vzv-cB-4g2" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fHc-56-dao">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="Md3-hK-NDQ" kind="relationship" relationship="rootViewController" id="6G3-vJ-50v"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="a8R-7O-rFQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4047" y="-581"/>
         </scene>
         <!--Form Table View Controller-->
         <scene sceneID="rLL-Gp-I5y">
@@ -193,27 +162,53 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="qPx-h1-o7U">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="VgR-ud-ynw">
-                            <connections>
-                                <action selector="clickCancel:" destination="Md3-hK-NDQ" id="dWd-i2-wIa"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="xEu-Kx-lgv">
+                        <barButtonItem key="rightBarButtonItem" title="Item" style="done" id="xEu-Kx-lgv">
                             <connections>
                                 <action selector="clickDone:" destination="Md3-hK-NDQ" id="ShM-av-qTf"/>
-                                <segue destination="uqh-56-16X" kind="unwind" unwindAction="unwindFromFormTableView:" id="k7A-62-1Kk"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="cancelBarButton" destination="VgR-ud-ynw" id="6ek-Dd-tmE"/>
                         <outlet property="doneBarButton" destination="xEu-Kx-lgv" id="kQC-pd-1iO"/>
+                        <segue destination="NLu-YL-bNi" kind="show" identifier="segueShowRisk" id="zg5-tV-68C"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Boi-8V-Gkp" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="uqh-56-16X" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4871" y="-581"/>
+            <point key="canvasLocation" x="4252" y="134"/>
+        </scene>
+        <!--Risk Adviser View View Controller-->
+        <scene sceneID="keO-Bs-DmY">
+            <objects>
+                <viewController id="NLu-YL-bNi" customClass="RiskAdviserViewViewController" customModule="DFPP" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="47O-Eg-L1x">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hHS-yA-ev1">
+                                <rect key="frame" x="20" y="84" width="335" height="563"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="hHS-yA-ev1" firstAttribute="centerX" secondItem="47O-Eg-L1x" secondAttribute="centerX" id="0ZI-hr-CaA"/>
+                            <constraint firstItem="YtF-R3-YZc" firstAttribute="bottom" secondItem="hHS-yA-ev1" secondAttribute="bottom" constant="20" id="fDJ-9J-DKc"/>
+                            <constraint firstItem="YtF-R3-YZc" firstAttribute="trailing" secondItem="hHS-yA-ev1" secondAttribute="trailing" constant="20" id="qxf-ha-1xs"/>
+                            <constraint firstItem="hHS-yA-ev1" firstAttribute="top" secondItem="YtF-R3-YZc" secondAttribute="top" constant="20" id="xpQ-Ey-6ft"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="YtF-R3-YZc"/>
+                    </view>
+                    <connections>
+                        <outlet property="textView" destination="hHS-yA-ev1" id="cFa-mH-UFi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RYv-C2-rNc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5263" y="134"/>
         </scene>
         <!--Pazienti-->
         <scene sceneID="958-Mv-Upn">

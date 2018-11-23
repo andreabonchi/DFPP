@@ -13,15 +13,14 @@ class Patient: NSObject {
     var name: String
     var surname : String
     
-    var histForm : Form?
-    var visitList: [Form] = []
+    var histForm : HistoryForm?
+    var visitList: [VisitForm] = []
     
     init(name: String, surname: String) {
         self.name = name
         self.surname = surname
         
-//        self.histForm = Form(name: self.surname)
-//        self.histForm.fillDefHistValues()
+
     }
     
     

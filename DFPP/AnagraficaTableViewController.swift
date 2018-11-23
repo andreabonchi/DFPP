@@ -34,6 +34,10 @@ class AnagraficaTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.tableView.reloadData()
+    }
 
     // MARK: - Table view data source
 
@@ -107,18 +111,22 @@ class AnagraficaTableViewController: UITableViewController {
                 let visit = self.patient?.visitList[indexPath.row]
                 cell.textLabel?.text = visit?.name
                 cell.detailTextLabel?.text = visit?.stringDate
+                
+                if visit!.isHighRiskResult! {
+                    cell.imageView?.image = highRiskImage
+                } else {
+                    cell.imageView?.image = lowRiskImage
+                }
+                
                 return cell
                 
             }
             
         }
         
-        
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellAnagrafica", for: indexPath)
         return cell
         
-
     }
     
     
@@ -129,15 +137,17 @@ class AnagraficaTableViewController: UITableViewController {
             var form = patient?.histForm
             
             if form == nil {
-                form = Form(name: "History", date: Date())
-                form?.fillDefHistValues()
+            
+                form = HistoryForm(sections: [], date: Date())
+                form?.fillDefaultValues()
+                
             }
             
             self.performSegue(withIdentifier: AnagraficaTableViewController.segueShowForm, sender: form)
         }
         
         
-        // sezione form visite
+        // sezione form VISITE
         if indexPath.section == 1 {
             
             if indexPath.row < patient!.visitList.count {
@@ -147,14 +157,13 @@ class AnagraficaTableViewController: UITableViewController {
                 print("cella con visita")
                 
             } else {
-                let form = Form(name: "Visit", date: Date())
-                form.fillDefVisitValues()
+                
+                let form = VisitForm(name: "Visit", sections: [], date: Date())
+                form.fillDefaultValues()
                 
                 self.performSegue(withIdentifier: AnagraficaTableViewController.segueShowForm, sender: form)
                 
             }
-            
-            
             
         }
         
@@ -175,28 +184,28 @@ class AnagraficaTableViewController: UITableViewController {
     
     
     
-    @IBAction func unwindFromFormTableView(_ sender: UIStoryboardSegue) {
-        
-        if let source = sender.source as? FormTableViewController {
-        
-            if source.myForm?.type == FormType.Historical {
-                self.patient?.histForm = source.myForm
-                
-            } else {
-                self.patient?.visitList.append(source.myForm!)
-            }
-            self.tableView.reloadData()
-            
-            
-//            for question in source.myForm!.sections[0].questions{
-//                print(question.responce)
+//    @IBAction func unwindFromFormTableView(_ sender: UIStoryboardSegue) {
+//
+//        if let source = sender.source as? FormTableViewController {
+//
+//            if source.myForm?.type == FormType.Historical {
+//                self.patient?.histForm = source.myForm
+//
+//            } else {
+//                self.patient?.visitList.append(source.myForm!)
 //            }
-
-            
-        } else {
-            print("errore nell'unwind ")
-        }
-    }
+//            self.tableView.reloadData()
+//
+//
+////            for question in source.myForm!.sections[0].questions{
+////                print(question.responce)
+////            }
+//
+//
+//        } else {
+//            print("L'origine dell'unwind non è un FormTableView")
+//        }
+//    }
     
 
     /*
@@ -243,9 +252,9 @@ class AnagraficaTableViewController: UITableViewController {
         if segue.identifier == AnagraficaTableViewController.segueShowForm {
             
             let form = sender as! Form
-            let navSegue = segue.destination as! UINavigationController
-            
-            if let formViewController = navSegue.topViewController as? FormTableViewController {
+
+            if let formViewController = segue.destination as? FormTableViewController {
+                
                 formViewController.myForm = form
             }
 

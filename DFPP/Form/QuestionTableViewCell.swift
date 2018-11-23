@@ -44,6 +44,10 @@ class QuestionTableViewCell: UITableViewCell {
 
     }
     
+    
+    /**
+     Imposta la grafica della cella sex
+     */
     func setSexCell() {
         let pink = UIColor.init(red: 255/255, green: 105/255, blue: 180/255, alpha: 1)
         let deepskyblue = UIColor(red: 0, green: 192/255, blue: 255/255, alpha: 1)
@@ -54,6 +58,7 @@ class QuestionTableViewCell: UITableViewCell {
         self.butSwitch.onTintColor = pink
     }
     
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
@@ -63,9 +68,6 @@ class QuestionTableViewCell: UITableViewCell {
     
     @objc func swichButChange() {
         self.delegate?.changeResponce(result: butSwitch.isOn, index: self.indexPath!)
-
-//        self.myQuestion?.responce = butSwitch.isOn
-//        print("valore cambiato in " + String(self.myQuestion!.responce))
         
     }
 
