@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 class HistoryForm : Form {
     
     override init(name: String = "History", sections: [Section], date: Date) {
@@ -27,13 +26,37 @@ class HistoryForm : Form {
     
     
     /**
-     Metodo che ritona l'età
+     Ritona vero se il paziente è ha più di 60 anni
      */
-    func getAge(){
+    func isOlderThan60() -> Bool {
+        let sec = self.sections.first!
         
+        let resp = sec.questions[6].responce
+        
+        return resp
         
     }
     
-    // TODO: metodo per il diabete
-    // TODO: metodo per sesso 
+    
+    /**
+     Torna una stringa con il tipo di diabete
+     */
+    func getDiabeteType() -> String {
+        let sec = self.sections.first!
+        
+        if sec.questions[0].responce { return "tipo 1" }
+        if sec.questions[1].responce { return "tipo 2" }
+        
+        return "Errore"
+    }
+    
+    /**
+     Torna vero se è un uomo, falso se una donna
+     */
+    func isMale() -> Bool {
+        let sec = self.sections.first!
+        
+        return !sec.questions[7].responce
+    }
+    
 }

@@ -40,11 +40,12 @@ class FormTableViewController: UITableViewController, QuestionCellDelegate {
             let visForm = self.myForm as! VisitForm
             self.doneBarButton.title = ""
             
-            if visForm.isHighRiskResult! {
-                self.doneBarButton.image = highRiskImage
-            } else {
-                self.doneBarButton.image = lowRiskImage
-            }
+            self.doneBarButton.image = visForm.resultImage
+//            if visForm.isHighRiskResult! {
+//                self.doneBarButton.image = highRiskImage
+//            } else {
+//                self.doneBarButton.image = lowRiskImage
+//            }
 
         } else {
             self.doneBarButton.title = "Done"
@@ -98,14 +99,10 @@ class FormTableViewController: UITableViewController, QuestionCellDelegate {
     
     
     // MARK: - click button responce
-//    @IBAction func clickCancel(_ sender: Any) {
-//        navigationController?.popViewController(animated: true)
-//
-//        dismiss(animated: true, completion: nil)
-//
-//    }
     
-    
+    /**
+     RIsponde al click su Done 
+    */
     @IBAction func clickDone(_ sender: Any) {
         
         // in case of visit form
@@ -116,7 +113,7 @@ class FormTableViewController: UITableViewController, QuestionCellDelegate {
                 
                 // salviamo la visita corrente
                 if self.appD.currentPatient != nil {
-                    self.appD.currentPatient!.visitList.append(visForm)
+                    self.appD.currentPatient!.visitList.insert(visForm, at: 0)
                 }
                 
                 self.buildBaseData()
@@ -166,6 +163,7 @@ class FormTableViewController: UITableViewController, QuestionCellDelegate {
         let okAction = UIAlertAction(title: "No", style: .cancel) {
             (_) -> Void in
             
+            // TODO: valutare se rimuovere azione
             self.goBackToView()
             
         }

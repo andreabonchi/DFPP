@@ -27,7 +27,10 @@ class AnagraficaTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        let nib = UINib(nibName: HistoryPatientCellXib, bundle: nil)
+        self.tableView.register(nib, forCellReuseIdentifier: HistoryPatientCellXib)
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -36,6 +39,7 @@ class AnagraficaTableViewController: UITableViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+
         self.tableView.reloadData()
     }
 
@@ -61,18 +65,6 @@ class AnagraficaTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        // Anagrafica
-        // TODO: verificare se rimuovere la cella
-//        if indexPath.section == 0 {
-//
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "cellAnagrafica", for: indexPath)
-//            cell.textLabel?.text = self.name
-//            cell.detailTextLabel?.text = self.surname
-//
-//            return cell
-//
-//        }
-        
         // Storia Clinica
         if indexPath.section == 0 {
             
@@ -84,15 +76,13 @@ class AnagraficaTableViewController: UITableViewController {
                 return cell
                 
             } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "cellHistory", for: indexPath)
+                let cell = tableView.dequeueReusableCell(withIdentifier: HistoryPatientCellXib, for: indexPath) as! HistoryPatientTableViewCell
                 
-                cell.textLabel?.text = patient?.histForm?.name
+                cell.setCellHistory(histForm: patient!.histForm!, lastVisit: patient?.visitList.first)
                 
                 return cell
             }
         }
-        
-        
         
         // Visite
         if indexPath.section == 1 {
@@ -112,11 +102,7 @@ class AnagraficaTableViewController: UITableViewController {
                 cell.textLabel?.text = visit?.name
                 cell.detailTextLabel?.text = visit?.stringDate
                 
-                if visit!.isHighRiskResult! {
-                    cell.imageView?.image = highRiskImage
-                } else {
-                    cell.imageView?.image = lowRiskImage
-                }
+                cell.imageView?.image = visit?.resultImage
                 
                 return cell
                 
@@ -154,7 +140,6 @@ class AnagraficaTableViewController: UITableViewController {
                 let visit = patient?.visitList[indexPath.row]
                 visit?.isModificable = false
                 self.performSegue(withIdentifier: AnagraficaTableViewController.segueShowForm, sender: visit)
-                print("cella con visita")
                 
             } else {
                 
@@ -166,8 +151,7 @@ class AnagraficaTableViewController: UITableViewController {
             }
             
         }
-        
-
+    
     }
     
     
@@ -179,6 +163,17 @@ class AnagraficaTableViewController: UITableViewController {
             return "Visite"
         default:
             return ""
+        }
+    }
+    
+    
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        if indexPath.section == 0 && patient?.histForm != nil {
+            return 110
+        } else {
+            return 44
         }
     }
     

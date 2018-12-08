@@ -15,10 +15,10 @@
 		AD2B12A7215A7E01009D1657 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD2B12A6215A7E01009D1657 /* Assets.xcassets */; };
 		AD2B12AA215A7E01009D1657 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD2B12A8215A7E01009D1657 /* LaunchScreen.storyboard */; };
 		AD2BDC7521A70F92001AECFB /* HistoryPatientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2BDC7321A70F91001AECFB /* HistoryPatientTableViewCell.swift */; };
-		AD2BDC7621A70F92001AECFB /* HistoryPatientTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD2BDC7421A70F92001AECFB /* HistoryPatientTableViewCell.xib */; };
 		AD649B8621A1E390009E3091 /* HistoryForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD649B8521A1E390009E3091 /* HistoryForm.swift */; };
 		AD649B8821A1E3E1009E3091 /* VisitForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD649B8721A1E3E1009E3091 /* VisitForm.swift */; };
 		AD67C26B218D0C9F00963A8B /* DataContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD67C26A218D0C9E00963A8B /* DataContent.swift */; };
+		AD6D0E7C21BBD08F003AEDFE /* HistoryPatientTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD2BDC7421A70F92001AECFB /* HistoryPatientTableViewCell.xib */; };
 		AD7024322177D42C00DFCBA2 /* FormTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7024312177D42C00DFCBA2 /* FormTableViewController.swift */; };
 		AD7024352177D45A00DFCBA2 /* QuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7024342177D45A00DFCBA2 /* QuestionTableViewCell.swift */; };
 		AD7B2C04217A03BD0076F253 /* AnagraficaTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B2C03217A03BD0076F253 /* AnagraficaTableViewController.swift */; };
@@ -90,8 +90,7 @@
 				AD7024332177D43800DFCBA2 /* Form */,
 				ADA9F0CA217655EF00D23408 /* DataStructure */,
 				AD2B129C215A7DFF009D1657 /* AppDelegate.swift */,
-				AD2BDC7321A70F91001AECFB /* HistoryPatientTableViewCell.swift */,
-				AD2BDC7421A70F92001AECFB /* HistoryPatientTableViewCell.xib */,
+				ADD402C521BBC8B400DAC696 /* TableCell */,
 				AD2B129E215A7DFF009D1657 /* ViewController.swift */,
 				AD2B12A0215A7DFF009D1657 /* Main.storyboard */,
 				AD2B12A6215A7E01009D1657 /* Assets.xcassets */,
@@ -123,6 +122,15 @@
 				AD67C26A218D0C9E00963A8B /* DataContent.swift */,
 			);
 			path = DataStructure;
+			sourceTree = "<group>";
+		};
+		ADD402C521BBC8B400DAC696 /* TableCell */ = {
+			isa = PBXGroup;
+			children = (
+				AD2BDC7321A70F91001AECFB /* HistoryPatientTableViewCell.swift */,
+				AD2BDC7421A70F92001AECFB /* HistoryPatientTableViewCell.xib */,
+			);
+			name = TableCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,7 +193,7 @@
 			files = (
 				AD2B12AA215A7E01009D1657 /* LaunchScreen.storyboard in Resources */,
 				AD2B12A7215A7E01009D1657 /* Assets.xcassets in Resources */,
-				AD2BDC7621A70F92001AECFB /* HistoryPatientTableViewCell.xib in Resources */,
+				AD6D0E7C21BBD08F003AEDFE /* HistoryPatientTableViewCell.xib in Resources */,
 				AD2B12A2215A7DFF009D1657 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

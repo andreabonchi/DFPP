@@ -49,13 +49,10 @@ class QuestionTableViewCell: UITableViewCell {
      Imposta la grafica della cella sex
      */
     func setSexCell() {
-        let pink = UIColor.init(red: 255/255, green: 105/255, blue: 180/255, alpha: 1)
-        let deepskyblue = UIColor(red: 0, green: 192/255, blue: 255/255, alpha: 1)
-        self.butSwitch.backgroundColor = deepskyblue.withAlphaComponent(0.9)
+        self.butSwitch.backgroundColor = maleColor.withAlphaComponent(0.9)
         self.butSwitch.tintColor = UIColor.clear
         self.butSwitch.layer.cornerRadius = self.butSwitch.bounds.height / 2
-//        self.butSwitch.tintColor = UIColor.blue
-        self.butSwitch.onTintColor = pink
+        self.butSwitch.onTintColor = femaleColor
     }
     
     

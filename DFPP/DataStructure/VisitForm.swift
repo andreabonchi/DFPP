@@ -7,11 +7,13 @@
 //
 
 import Foundation
+import UIKit
 
 class VisitForm : Form {
     
     var visitResultInt : Int?
     var isHighRiskResult : Bool?
+    lazy var resultImage : UIImage = self.getResultImage()
     
     override init(name: String, sections: [Section], date: Date) {
         super.init(name: name, date: date)
@@ -31,7 +33,6 @@ class VisitForm : Form {
         self.sections.append(self.addSection(name: "Valutazione della sensibilità", questArray: dict_quest_sens))
         self.sections.append(self.addSection(name: "Autovalutazione", questArray: dict_quest_auto))
     }
-    
     
     
     /**
@@ -59,6 +60,18 @@ class VisitForm : Form {
         return self.isHighRiskResult!
     }
     
-
+    /**
+     Ritorna l'immagine corrispondente al risultato della visita
+     */
+    func getResultImage() -> UIImage {
+        
+        if self.isHighRiskResult! {
+            return highRiskImage!
+        } else {
+            return lowRiskImage!
+        }
+        
+    }
+    
     
 }
